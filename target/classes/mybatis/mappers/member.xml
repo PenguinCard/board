@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.member">
+	<insert id="addMember" parameterType="com.java.board.member.dto.MemberDTO">
+		insert into p_member 
+		values(m_seq.nextval, #{m_id}, #{m_pw}, #{m_name}, #{m_phone}, #{m_email})
+	</insert>
+	
+	<!-- get memberDTO -->
+	<select id="memberInfo" parameterType="com.java.board.member.dto.MemberDTO" resultType="com.java.board.member.dto.MemberDTO">
+		select * from p_member where m_id=#{m_id} and m_pw=#{m_pw}
+	</select>
+	
+	<!-- loginCheck -->
+	<select id="loginCheck" parameterType="com.java.board.member.dto.MemberDTO" resultType="boolean">
+		select nvl2((select m_num from p_member 
+		where m_id=#{m_id} and m_pw=#{m_pw}), 1, 0) chkNotNull 
+		from dual
+	</select>
+	
+	<delete id="delMember" parameterType="int">
+		delete from p_member where m_num=#{value}
+	</delete>
+	
+	<update id="modMember" parameterType="com.java.board.member.dto.MemberDTO">
+		update p_member set m_pw=#{m_pw}
+		<if test="m_phone!=null">
+			, m_phone=#{m_phone}
+		</if>
+		<if test="m_email!=null">
+			, m_email=#{m_email}
+		</if> 
+		where m_id=#{m_id}
+	</update>
+	
+	<select id="idOverlapChk" parameterType="String" resultType="boolean">
+		select nvl2((select m_num from p_member 
+		where m_id=#{value}), 1, 0) chkNotNull 
+		from dual 
+	</select>
+</mapper>

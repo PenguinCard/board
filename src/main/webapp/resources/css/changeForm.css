@@ -1,0 +1,92 @@
+@charset "UTF-8";
+* {
+	margin: 0 auto;
+	padding: 0;
+	font-family: sans-serif;
+}
+.wrap {
+	position: absolute;
+	width: 100%;
+	background-image: url("../img/grass.jpg");
+	background-size: 100% 100%;
+}
+#logo {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	position: relative;
+	left: 40px;
+	top: 10px;
+}
+h1 {
+	display: inline-block;
+	position: relative;
+	left: 65px;
+	color: white;
+}	
+table {
+	background-color: rgba(128, 128, 128, 0.6);
+	margin: 0 auto;
+	width: 400px;
+	height: 400px;
+}
+span {
+	color: #fff;
+}
+select {
+	width: 60px;
+	color: #fff;
+	border: none;
+	background-color: rgba(84, 84, 84, 0.5);
+}
+select:focus {
+	outline: none;
+}
+button {
+	color: #fff;
+	border: none;
+	padding: 5px 10px;
+	background-color: rgba(84, 84, 84, 0.5);
+}
+button:focus {
+	outline: none;
+}
+input {
+	color: #fff;
+	border: none;
+	background-color: rgba(54, 54, 54, 0.5);
+}
+input:focus {
+	outline: none;
+}
+.chk {
+	margin: 0 10px;
+	padding: 5px 20px;
+}
+.col1 {
+	text-align: center;
+	width: 120px;
+	color: #fff;
+}
+.col2 {
+	text-align: center;
+}
+.col3 {
+	width: 100px;
+	text-align: center;
+}
+#email1 {
+	width: 100px;
+}
+#email2 {
+	width: 100px;
+}
+#phone2 {
+	width: 70px;
+}
+#phone3 {
+	width: 70px;
+}
+#last {
+	text-align: center;
+}
