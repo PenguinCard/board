@@ -15,8 +15,16 @@
 <body>
 	<header>
 		<a href="${path}/board/"><img id="logo" src="${path}/resources/img/leaf.png"></a>
-		<button type="button" onclick="loginForm('${path}');">로그인</button>
-		<button type="button" onclick="memberForm('${path}');">회원가입</button>
+		<c:choose>
+			<c:when test="${not empty sessionScope.memInfo}">
+				<button type="button" onclick="logout('${path}');">로그아웃</button>
+				<button type="button" onclick="chgInfo('${path}')">회원정보</button>
+			</c:when>
+			<c:otherwise>
+				<button type="button" onclick="loginForm('${path}');">로그인</button>
+				<button type="button" onclick="memberForm('${path}');">회원가입</button>
+			</c:otherwise>
+		</c:choose>
 	</header>
 	<h1>수정하기</h1>
 <form action="${path}/board/update.do" method="post" enctype="multipart/form-data">

@@ -34,7 +34,10 @@
 					</tr>
 					<tr>
 						<td class="col1">비밀번호</td>
-						<td class="col2"><input type="password" id="pw" name="pw"/></td>
+						<td class="col2">
+							<input type="password" id="pw" name="pw" onchange="pwAlgorithm();"/>
+							<div id="pwchkalert"></div>
+						</td>
 						<td class="col3"></td>
 					</tr>
 					<tr>

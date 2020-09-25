@@ -54,7 +54,7 @@
  </update>
  
  <update id="updateBoard" parameterType="com.java.board.board.dto.BoardDTO">
- 	update  p_board set title=#{title}, contents=#{contents}, imagefilename=#{imageFileName} 
+ 	update  p_board set title=#{title}, contents=#{contents}, imagefilename=#{imageFileName}, writedate=sysdate
  	where articleno=#{articleNo}
  </update>
  

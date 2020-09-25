@@ -70,6 +70,7 @@ input:focus {
 }
 .col2 {
 	text-align: center;
+	position:relative;
 }
 .col3 {
 	width: 100px;
@@ -97,6 +98,11 @@ input:focus {
 	position: absolute;
 }
 #pwtext {
+	margin-left: 15px;
+	font-size: 12px;
+	position: absolute;
+}
+#pwchkalert {
 	margin-left: 15px;
 	font-size: 12px;
 	position: absolute;

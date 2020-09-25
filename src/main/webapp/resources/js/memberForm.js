@@ -1,9 +1,22 @@
 var idOverlapChk = false;
 var id="";
 var chk=false;
+var pwchk=false;
 
 function backToList(path) {
 	location.href = path + "/board/";
+}
+
+function pwAlgorithm() {
+	var regex=/^\w{8,20}$/;
+	var pw=$("#pw").val();
+	if(regex.exec(pw)==null){
+		$("#pwchkalert").text("형식이 일치하지 않습니다").css('color', 'red').css('font-weight', 'bold');
+		pwchk=false;
+	} else {
+		$("#pwchkalert").text("비밀번호로 사용가능합니다").css('color', 'green').css('font-weight', 'bold');
+		pwchk=true;
+	}
 }
 
 function chkPw(){
@@ -13,7 +26,7 @@ function chkPw(){
 		$("#pwtext").text("비밀번호가 일치합니다").css('color', 'green').css('font-weight', 'bold');
 		chk=true;
 	} else {
-		$("#pwtext").text("비밀번호가 일치하지 않습니다.").css('color', 'red').css('font-weight', 'bold');
+		$("#pwtext").text("비밀번호가 다릅니다").css('color', 'red').css('font-weight', 'bold');
 		chk=false;
 	}
 }
@@ -28,9 +41,13 @@ function insertMember(path) {
 				if(idOverlapChk){
 					if(idchknull==id){
 						if(chk){
-							memberInfo.method = "post";
-							memberInfo.action = path + "/member/addMember.do";
-							memberInfo.submit();
+							if(pwchk){
+								memberInfo.method = "post";
+								memberInfo.action = path + "/member/addMember.do";
+								memberInfo.submit();
+							} else {
+								alert("비밀번호 형식이 일치하지 않습니다");
+							}
 						} else {
 							alert("비밀번호가 일치하지 않습니다");
 						}

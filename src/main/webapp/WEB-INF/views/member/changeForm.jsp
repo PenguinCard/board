@@ -39,10 +39,6 @@
 						<td class="col2"><input type="text" name="name" value="${sessionScope.memInfo.m_name}" readonly="readonly"/></td>
 						<td class="col3"></td>
 					</tr>
-					<!--  <tr>
-						<td>비밀번호확인</td>
-						<td><input type="password" /></td>
-					</tr> -->
 					<tr>
 						<td class="col1">휴대번호</td>
 						<td class="col2" colspan="2">

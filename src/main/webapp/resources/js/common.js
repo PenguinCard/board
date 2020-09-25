@@ -14,5 +14,5 @@ function memberForm(str) {
 }
 
 function chgInfo(str) {
-	location.href=str+"/member/checkForm";
+	location.href=str+"/member/changeForm";
 }
