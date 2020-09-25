@@ -1,8 +1,8 @@
 function move(path, index, item, value){
-	if(item==null||value==null){
-		location.href=path+"/board/?count="+index;
-	} else {
+	if(item!=null&&item!=""&&value!=null&&value!=""){
 		location.href=path+"/board/?count="+index+"&"+item+"="+value;
+	} else {
+		location.href=path+"/board/?count="+index;
 	}
 }
 

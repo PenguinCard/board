@@ -87,10 +87,14 @@
 		<section>
 			<!-- Paging Area -->
 			<article>
+				<%-- 페이지가 5이상일 때 이전페이지 화살표 띄우는 조건 --%>
 				<c:if test="${sessionScope.endPage gt 5}">
+					<%-- 맨처음 페이지로 이동 --%>
 					<button type="button" class="count" onclick="move('${path}', '1', '${item}', '${value}')">&lt;&lt;</button>
 					<c:choose>
+						<%-- 현재 페이지가 1보다 작아질 때 --%>
 						<c:when test="${sessionScope.currentPage le 1}">
+							<%--알림창을 띄우고 현재페이지의 이동을 막음 --%>
 							<button type="button" class="count" onclick="alert('페이지의 처음입니다.');">&lt;</button>
 						</c:when>
 						<c:otherwise>
@@ -100,45 +104,31 @@
 				</c:if>
 				<div id="area">
 					<c:choose>
-						<c:when test="${sessionScope.endPage lt 5}">
-							<c:forEach var="count" begin="${sessionScope.startPage}" end="${sessionScope.endPage}">
+						<%-- 시작페이지부터 시작페이지+4까지 표시 (5개를 표시하므로) --%>
+						<c:when test="${sessionScope.endPage ge sessionScope.startPage+4}">
+							<c:forEach var="count" begin="${sessionScope.startPage}" end="${sessionScope.startPage+4}">
 								<c:choose>
+									<%-- 현재페이지의 글씨를 두껍게 표시 --%>
 									<c:when test="${count eq sessionScope.currentPage}">
-										<button type="button" style="font-weight: bold;" class="count" onclick="move('${path}', '${count}',  '${item}', '${value}')">${count}</button>
+										<button type="button" style="font-weight: bold;" class="count" onclick="move('${path}', '${count}', '${item}', '${value}')">${count}</button>
 									</c:when>
 									<c:otherwise>
-										<button type="button" class="count" onclick="move('${path}', '${count}',  '${item}', '${value}')">${count}</button>
+										<button type="button" class="count" onclick="move('${path}', '${count}', '${item}', '${value}')">${count}</button>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							<c:choose>
-								<c:when test="${sessionScope.endPage ge sessionScope.startPage+4}">
-									<c:forEach var="count" begin="${sessionScope.startPage}" end="${sessionScope.startPage+4}">
-										<c:choose>
-											<c:when test="${count eq sessionScope.currentPage}">
-												<button type="button" style="font-weight: bold;" class="count" onclick="move('${path}', '${count}', '${item}', '${value}')">${count}</button>
-											</c:when>
-											<c:otherwise>
-												<button type="button" class="count" onclick="move('${path}', '${count}', '${item}', '${value}')">${count}</button>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="count" begin="${sessionScope.startPage}" end="${sessionScope.endPage}">
-										<c:choose>
-											<c:when test="${count eq sessionScope.currentPage}">
-												<button type="button" style="font-weight: bold;" class="count" onclick="move('${path}', '${count}', '${item}', '${value}')">${count}</button>
-											</c:when>
-											<c:otherwise>
-												<button type="button" class="count" onclick="move('${path}', '${count}', '${item}', '${value}')">${count}</button>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
+							<c:forEach var="count" begin="${sessionScope.startPage}" end="${sessionScope.endPage}">
+								<c:choose>
+									<c:when test="${count eq sessionScope.currentPage}">
+										<button type="button" style="font-weight: bold;" class="count" onclick="move('${path}', '${count}', '${item}', '${value}')">${count}</button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="count" onclick="move('${path}', '${count}', '${item}', '${value}')">${count}</button>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 						</c:otherwise>
 					</c:choose>
 				</div>
