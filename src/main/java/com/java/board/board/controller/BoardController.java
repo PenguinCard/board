@@ -1,8 +1,6 @@
 package com.java.board.board.controller;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -168,44 +165,5 @@ public class BoardController {
 		folder.delete();
 		service.deleteBoard(no);
 		return mav;
-	}
-	
-	@RequestMapping(value="/shiftLeft", method=RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> shiftLeft(){
-		Map<String, Object> map=new HashMap<>();
-		if(startPage-5>0) {
-			startPage-=5;
-		}
-		if(endPage >= startPage+4) {
-			for(int i=0; i<5; i++) {
-				map.put(Integer.toString(i), startPage+i);
-			}
-		} else {
-			for(int i=0; i<endPage%5; i++) {
-				map.put(Integer.toString(i), startPage+i);
-			}
-		}
-		return map;
-	}
-	
-	@RequestMapping(value="/shiftRight", method=RequestMethod.POST)
-	@ResponseBody
-	public Map<String, Object> shiftRight(){
-		Map<String, Object> map=new HashMap<>();
-		if(startPage+4<endPage) {
-			startPage+=5;
-		}	
-	
-		if(endPage >= startPage+4) {
-			for(int i=0; i<5; i++) {
-				map.put(Integer.toString(i), startPage+i);
-			}
-		} else {
-			for(int i=0; i<endPage%5; i++) {
-				map.put(Integer.toString(i), startPage+i);
-			}
-		}
-		return map;
 	}
 }
